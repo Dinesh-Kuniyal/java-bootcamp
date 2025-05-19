@@ -1,6 +1,6 @@
 package com.bootcamp.shapes;
 
-public class Square {
+public class Square implements ClosedShapes {
 
     private final int side;
 

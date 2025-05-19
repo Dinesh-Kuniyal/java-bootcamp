@@ -1,6 +1,6 @@
 package com.bootcamp.shapes;
 
-public class Rectangle {
+public class Rectangle implements  ClosedShapes{
     private final int length;
     private final int breadth;
 
