@@ -7,38 +7,28 @@ import static org.junit.jupiter.api.Assertions.*;
 class ProbabilityTest {
     @Test
     void invalidProbability() {
-        assertThrows(Exception.class, ()-> {
+        assertThrows(Exception.class, () -> {
             Probability.createProbability(1.1);
-        }, "should throw an error if given invalid chance");
-    }
+        }, "should throw an error if given impossibility");
 
-    @Test
-    void gettingChancesTailsOneCoin() throws Exception {
-        Probability actual = Probability.createProbability(0.5);
-
-        assertInstanceOf(Probability.class, actual);
+        assertThrows(Exception.class, () -> {
+            Probability.createProbability(-1);
+        }, "should throw an error if given certainty");
     }
 
     @Test
     void gettingChancesTailsComplimentOneCoin() throws Exception {
-        Probability expected = Probability.createProbability(0.5);
+        Probability chancesOfGettingTailComplement = Probability.createProbability(0.5);
 
-        assertEquals(Probability.createProbability(0.5).compliment(), expected);
-    }
-
-    @Test
-    void gettingChancesTailsTwoCoin() throws Exception {
-        Probability actual = Probability.createProbability(0.25);
-
-        assertInstanceOf(Probability.class, actual);
+        assertEquals(Probability.createProbability(0.5).compliment(), chancesOfGettingTailComplement);
     }
 
     @Test
     void gettingChancesTailsComplementTwoCoin() throws Exception {
-        Probability coinProbability = Probability.createProbability(0.25);
+        Probability chancesOfGettingTailsComplementOnTwoCoins = Probability.createProbability(0.25);
         Probability expected = Probability.createProbability(0.75);
 
-        assertEquals(coinProbability.compliment(), expected);
+        assertEquals(chancesOfGettingTailsComplementOnTwoCoins.compliment(), expected);
     }
 
     @Test
@@ -47,5 +37,13 @@ class ProbabilityTest {
         Probability second = Probability.createProbability(0.5);
 
         assertEquals(first.and(second), Probability.createProbability(0.25));
+    }
+
+    @Test
+    void orProbability() throws Exception {
+        Probability first = Probability.createProbability(0.8);
+        Probability second = Probability.createProbability(0.8);
+
+        assertEquals(first.or(second), Probability.createProbability(0.96));
     }
 }
