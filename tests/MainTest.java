@@ -9,4 +9,11 @@ class MainTest {
 
         assertEquals(5, sum);
     }
+
+    @Test
+    void sub() {
+        int res = Main.sub(3, 1);
+
+        assertEquals(2, res);
+    }
 }
