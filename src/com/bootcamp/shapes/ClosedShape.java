@@ -1,6 +1,6 @@
 package com.bootcamp.shapes;
 
-public interface ClosedShapes  {
+public interface ClosedShape {
     int perimeter();
     int area();
 }
