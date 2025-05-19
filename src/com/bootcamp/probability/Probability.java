@@ -32,4 +32,8 @@ public class Probability {
 
         return new Probability(chances);
     }
+
+    public Probability and(Probability toAnd) {
+        return new Probability(probability * toAnd.probability);
+    }
 }

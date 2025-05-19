@@ -40,4 +40,12 @@ class ProbabilityTest {
 
         assertEquals(coinProbability.compliment(), expected);
     }
+
+    @Test
+    void andProbability() throws Exception {
+        Probability first = Probability.createProbability(0.5);
+        Probability second = Probability.createProbability(0.5);
+
+        assertEquals(first.and(second), Probability.createProbability(0.25));
+    }
 }
