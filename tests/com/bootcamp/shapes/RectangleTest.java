@@ -36,4 +36,20 @@ class RectangleTest {
 
         assertEquals(8, perimeter, "should calculate the perimeter");
     }
+
+    @Test
+    void perimeterWithZeroLength() {
+        Rectangle rectangle = new Rectangle(0, 2);
+        int perimeter = rectangle.perimeter();
+
+        assertEquals(4, perimeter, "should calculate the perimeter with 0 length");
+    }
+
+    @Test
+    void perimeterWithZeroBreadth() {
+        Rectangle rectangle = new Rectangle(2, 0);
+        int perimeter = rectangle.perimeter();
+
+        assertEquals(4, perimeter, "should calculate the perimeter with 0 breadth");
+    }
 }
