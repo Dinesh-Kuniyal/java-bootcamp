@@ -28,4 +28,12 @@ class RectangleTest {
 
         assertEquals(0, area, "should calculate the area with 0 breadth");
     }
+
+    @Test
+    void perimeter() {
+        Rectangle rectangle = new Rectangle(2, 2);
+        int perimeter = rectangle.perimeter();
+
+        assertEquals(8, perimeter, "should calculate the perimeter");
+    }
 }
