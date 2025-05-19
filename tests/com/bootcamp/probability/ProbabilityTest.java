@@ -6,14 +6,38 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class ProbabilityTest {
     @Test
-    void gettingChances() {
-        Probability coin = new Probability(1, 2);
-        assertEquals(0.5, coin.gettingChances());
+    void invalidProbability() {
+        assertThrows(Exception.class, ()-> {
+            Probability.createProbability(1.1);
+        }, "should throw an error if given invalid chance");
     }
 
     @Test
-    void notGettingChances() {
-        Probability coin = new Probability(1, 2);
-        assertEquals(0.5, coin.notGettingChances());
+    void gettingChancesTailsOneCoin() throws Exception {
+        Probability actual = Probability.createProbability(0.5);
+
+        assertInstanceOf(Probability.class, actual);
+    }
+
+    @Test
+    void gettingChancesTailsComplimentOneCoin() throws Exception {
+        Probability expected = Probability.createProbability(0.5);
+
+        assertEquals(Probability.createProbability(0.5).compliment(), expected);
+    }
+
+    @Test
+    void gettingChancesTailsTwoCoin() throws Exception {
+        Probability actual = Probability.createProbability(0.25);
+
+        assertInstanceOf(Probability.class, actual);
+    }
+
+    @Test
+    void gettingChancesTailsComplementTwoCoin() throws Exception {
+        Probability coinProbability = Probability.createProbability(0.25);
+        Probability expected = Probability.createProbability(0.75);
+
+        assertEquals(coinProbability.compliment(), expected);
     }
 }
