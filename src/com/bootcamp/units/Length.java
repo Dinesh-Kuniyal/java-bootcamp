@@ -4,6 +4,10 @@ import java.util.Objects;
 
 public class Length {
 
+    public static final double INCH_TO_CM = 2.5;
+    public static final int CM = 1;
+    public static final double MM_TO_CM = 0.1;
+    public static final int FEET_TO_CM = 30;
     private final double value;
 
     public Length(double value) {
@@ -11,7 +15,7 @@ public class Length {
     }
 
     public static Length createFeet(double value) throws InvalidLengthException {
-        return create(value, 30);
+        return create(value, FEET_TO_CM);
     }
 
     private static Length create(double value, double factor) throws InvalidLengthException {
@@ -23,15 +27,15 @@ public class Length {
     }
 
     public static Length createInch(double value) throws InvalidLengthException {
-        return create(value, 2.5);
+        return create(value, INCH_TO_CM);
     }
 
     public static Length createCentimeter(double value) throws InvalidLengthException {
-        return create(value, 1);
+        return create(value, CM);
     }
 
     public static Length createMillimeter(double value) throws InvalidLengthException {
-        return create(value, 0.1);
+        return create(value, MM_TO_CM);
     }
 
     @Override
