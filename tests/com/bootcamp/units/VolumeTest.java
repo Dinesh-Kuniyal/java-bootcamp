@@ -29,7 +29,7 @@ class VolumeTest {
     @Test
     void shouldNotCreateLitresIfGivenInvalidValue() {
         assertThrows(Exception.class, () -> {
-            Volume invalidGallon = Volume.createLitre(-1);
+            Volume invalidGallon = Volume.createGallon(-1);
         });
     }
 }

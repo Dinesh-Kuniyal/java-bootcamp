@@ -22,6 +22,14 @@ public class Length {
         return create(value, 2.5);
     }
 
+    public static Length createCentimeter(double value) {
+        return create(value, 1);
+    }
+
+    public static Length createMillimeter(double value) {
+        return create(value, 0.1);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
