@@ -10,23 +10,27 @@ public class Length {
         this.value = value;
     }
 
-    public static Length createFeet(double value) {
+    public static Length createFeet(double value) throws InvalidLengthException {
         return create(value, 30);
     }
 
-    private static Length create(double value, double factor) {
+    private static Length create(double value, double factor) throws InvalidLengthException {
+        if(value < 0) {
+            throw new InvalidLengthException();
+        }
+
         return new Length(value * factor);
     }
 
-    public static Length createInch(double value) {
+    public static Length createInch(double value) throws InvalidLengthException {
         return create(value, 2.5);
     }
 
-    public static Length createCentimeter(double value) {
+    public static Length createCentimeter(double value) throws InvalidLengthException {
         return create(value, 1);
     }
 
-    public static Length createMillimeter(double value) {
+    public static Length createMillimeter(double value) throws InvalidLengthException {
         return create(value, 0.1);
     }
 

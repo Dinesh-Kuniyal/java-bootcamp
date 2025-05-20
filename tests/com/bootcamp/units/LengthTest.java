@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class LengthTest {
     @Test
-    void inchToFeetComparison() {
+    void inchToFeetComparison() throws InvalidLengthException {
         Length oneFeet = Length.createFeet(1);
         Length twelveInch = Length.createInch(12);
 
@@ -14,7 +14,14 @@ class LengthTest {
     }
 
     @Test
-    void feetToInchComparison() {
+    void shouldNotCreateInstanceForInvalidValue() {
+        assertThrows(InvalidLengthException.class, () -> {
+            Length oneFeet = Length.createFeet(-1);
+        });
+    }
+
+    @Test
+    void feetToInchComparison() throws InvalidLengthException {
         Length oneFeet = Length.createFeet(2);
         Length twelveInch = Length.createInch(24);
 
@@ -22,7 +29,7 @@ class LengthTest {
     }
 
     @Test
-    void inchToCentimeter() {
+    void inchToCentimeter() throws InvalidLengthException {
         Length twoCentimeter = Length.createCentimeter(5);
         Length twentyFourInch = Length.createInch(2);
 
@@ -30,7 +37,7 @@ class LengthTest {
     }
 
     @Test
-    void centimeterToInch() {
+    void centimeterToInch() throws InvalidLengthException {
         Length twoCentimeter = Length.createCentimeter(2.5);
         Length twentyFourInch = Length.createInch(1);
 
@@ -38,7 +45,7 @@ class LengthTest {
     }
 
     @Test
-    void centimeterToMillimeter() {
+    void centimeterToMillimeter() throws InvalidLengthException {
         Length oneCentimeter = Length.createCentimeter(1);
         Length tenMillimeter = Length.createMillimeter(10);
 
