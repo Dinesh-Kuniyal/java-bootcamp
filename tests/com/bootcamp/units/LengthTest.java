@@ -51,4 +51,13 @@ class LengthTest {
 
         assertEquals(oneCentimeter, tenMillimeter);
     }
+
+    @Test
+    void addInches() throws InvalidLengthException {
+        Length twoInches = Length.createInch(2);
+        Length threeInches = Length.createInch(3);
+        Length fiveInches = Length.createInch(5);
+
+        assertEquals(twoInches.add(threeInches), fiveInches);
+    }
 }

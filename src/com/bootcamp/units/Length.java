@@ -45,4 +45,8 @@ public class Length {
     public int hashCode() {
         return Objects.hashCode(value);
     }
+
+    public Length add(Length other) {
+        return new Length(this.value + other.value);
+    }
 }
